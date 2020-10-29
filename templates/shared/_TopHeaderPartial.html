@@ -1,0 +1,84 @@
+{% load static %}
+<div class="header__wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="header__content">
+                    <button class="header__menu" type="button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <a href="index.html" class="header__logo">
+                        <img src="{% static 'img/logo.svg' %}" alt="">
+                    </a>
+                    <ul class="header__nav">
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="index.html">خانه</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#" role="button" id="dropdownMenu1"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">دسته بندی ها</a>
+                            <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="catalog.html">دسته ها</a></li>
+                                <li><a href="details.html">جزئیات</a></li>
+                            </ul>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#" role="button" id="dropdownMenu2"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">بلاگ</a>
+                            <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu2">
+                                <li><a href="news.html">اخبار</a></li>
+                                <li><a href="article.html">مقالات</a></li>
+                                <li><a href="interview.html">مصاحبه ها</a></li>
+                            </ul>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="faq.html">مرکز راهنما</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#" role="button" id="dropdownMenu3"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                     viewBox='0 0 512 512'>
+                                    <circle cx='256' cy='256' r='32'
+                                            style='fill:none; stroke-miterlimit:10;stroke-width:32px'/>
+                                    <circle cx='416' cy='256' r='32'
+                                            style='fill:none;stroke-miterlimit:10;stroke-width:32px'/>
+                                    <circle cx='96' cy='256' r='32'
+                                            style='fill:none;stroke-miterlimit:10;stroke-width:32px'/>
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu header__nav-menu header__nav-menu--scroll"
+                                aria-labelledby="dropdownMenu3">
+                                <li><a href="checkout.html">ثبت نهایی</a></li>
+                                <li><a href="favorites.html">نشان ها</a></li>
+                                <li><a href="about.html">درباره ما</a></li>
+                                <li><a href="profile.html">پروفایل</a></li>
+                                <li><a href="signin.html">ورود اعضا</a></li>
+                                <li><a href="signup.html">ثبت نام</a></li>
+                                <li><a href="forgot.html">فراموشی رمز عبور</a></li>
+                                <li><a href="privacy.html">حریم خصوصی</a></li>
+                                <li><a href="contacts.html">تماس با ما</a></li>
+                                <li><a href="404.html">صفحه 404</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="header__actions">
+                        <a href="signin.html" class="header__login mr-auto">
+                            <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'>
+                                <path d='M192,176V136a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V376a40,40,0,0,1-40,40H240c-22.09,0-48-17.91-48-40V336'
+                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                <polyline points='288 336 368 256 288 176'
+                                          style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                <line x1='80' y1='256' x2='352' y2='256'
+                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                            </svg>
+                            <span>ورود اعضا</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

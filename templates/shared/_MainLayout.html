@@ -1,0 +1,29 @@
+{% load render_partial %}
+{% load render_partial %}
+{% load static %}
+{% load render_partial %}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+<head>
+    {% include 'shared/_MetaTags.html' %}
+    {% block MetaTags %}{% endblock %}
+    {% include 'shared/_HeaderReferences.html' %}
+    <title>{{ page_title }}</title>
+</head>
+
+<body class="text-right">
+
+<header class="header">
+    {% render_partial 'home_app.views.top_header' %}
+    {% render_partial 'home_app.views.bottom_header' %}
+</header>
+
+{% block Content %}{% endblock %}
+
+{% render_partial 'home_app.views.footer' %}
+
+{% include 'shared/_FooterReferences.html' %}
+
+</body>
+</html>

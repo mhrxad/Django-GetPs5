@@ -13,6 +13,10 @@ html, body {
     height: 100%
 }
 
+* {
+    font-family: iransans, sans-serif;
+}
+
 body {
     font-family: iransans, sans-serif;
     font-weight: 100;

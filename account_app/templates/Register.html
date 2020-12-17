@@ -1,0 +1,82 @@
+{% load render_partial %}
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+<head>
+    {% include 'shared/_MetaTags.html' %}
+    {% block MetaTags %}{% endblock %}
+    {% include 'shared/_HeaderReferences.html' %}
+    <title>{{ page_title }}</title>
+</head>
+
+<body class="text-right">
+
+
+<div class="sign section--full-bg" data-bg="{% static 'img/bg2.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="sign__content">
+
+                    <form class="sign__form" method="post" novalidate>
+                        {% csrf_token %}
+
+                        <a href="{% url 'home:home' %}" class="sign__logo">
+                            <img src="{% static 'img/logo.svg' %}" alt="">
+                        </a>
+
+                        <div class="sign__group">
+                            {% render_field register_form.email class="sign__input" placeholder=register_form.email.label %}
+                            {% for errors in register_form.email.errors %}
+                                <span class="text-danger">{{ errors }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="sign__group">
+                            {% render_field register_form.password class="sign__input" placeholder=register_form.password.label %}
+                            {% for errors in register_form.password.errors %}
+                                <span class="text-danger">{{ errors }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="sign__group">
+                            {% render_field register_form.re_password class="sign__input" placeholder=register_form.re_password.label %}
+                            {% for errors in register_form.re_password.errors %}
+                                <span class="text-danger">{{ errors }}</span>
+                            {% endfor %}
+                        </div>
+
+                        {% if register_form.re_captcha %}
+                            <div class="sign__group">
+                                {{ register_form.re_captcha }}
+                            </div>
+                            {% for errors in register_form.re_captcha.errors %}
+                                <span class="text-danger">{{ errors }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+
+                        <div class="sign__group sign__group--checkbox">
+                            <input id="remember" name="remember" type="checkbox" checked="checked">
+                            <label for="remember">من با متن <a href="privacy.html">شرایط و قوانین</a> موافقم</label>
+                        </div>
+
+                        <button class="sign__btn" type="submit">ثبت نام</button>
+                        <span class="sign__text">حساب کاربری دارید ؟ <a href="{% url 'account:login' %}">ورود!</a></span>
+
+                    {{ register_form.accept_rules }}
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'shared/_FooterReferences.html' %}
+
+</body>
+</html>

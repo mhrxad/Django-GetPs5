@@ -27,4 +27,4 @@ def footer(request):
 
     }
     return render(request, 'shared/_FooterPartial.html', context)
-# endregion " Partial View "
+# endregion "END Partial View "

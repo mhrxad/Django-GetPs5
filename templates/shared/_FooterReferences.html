@@ -1,3 +1,4 @@
+{% load static %}
 <script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
@@ -7,3 +8,18 @@
 <script src="{% static 'js/jquery.mousewheel.min.js' %}"></script>
 <script src="{% static 'js/jquery.mCustomScrollbar.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/notifications.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+
+{% if messages %}
+    <script>
+        $(document).ready(function () {
+            {% for message in messages %}
+                {% if message.tags != 'debug' %}
+                    ShowMessage('', '{{ message }}', '{{ message.tags }}');
+                {% endif %}
+            {% endfor %}
+        });
+    </script>
+{% endif %}

@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     # apps
     'home_app',
     'account_app',
+    'aboutus_app',
+    'privacy_app',
     # packages
     'debug_toolbar',
     'django_render_partial',
@@ -125,7 +127,7 @@ RECAPTCHA_PRIVATE_KEY = '6LfBINoZAAAAAJuzBhmv9QHhA1odWGn31siueYz_'
 
 # CKEDITOR CONFIGS
 CKEDITOR_CONFIGS = {
-    'awesome_ckeditor': {
+    'default': {
         'toolbar': 'full',
         'height': 400,
         'width': 1100,

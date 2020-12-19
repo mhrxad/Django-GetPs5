@@ -9,7 +9,6 @@ def user_avatar_image_file_path(instance, filename):
     """Generate file path for user avatar image"""
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
-
     return os.path.join('uploads/user/avatar', filename)
 
 

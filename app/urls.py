@@ -19,6 +19,7 @@ urlpatterns = [
     path('', include("account_app.urls")),
     path('', include("aboutus_app.urls")),
     path('', include("privacy_app.urls")),
+    path('', include("contactus_app.urls")),
 
     path('admin/', admin.site.urls),
     path('ckeditor', include("ckeditor_uploader.urls")),

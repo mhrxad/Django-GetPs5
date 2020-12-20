@@ -18,6 +18,14 @@
                         </li>
                         <li class="header__nav-item">
                             <a class="header__nav-link" href="#" role="button" id="dropdownMenu1"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">محصولات</a>
+                            <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="catalog.html">دسته ها</a></li>
+                                <li><a href="details.html">جزئیات</a></li>
+                            </ul>
+                        </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="#" role="button" id="dropdownMenu1"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">دسته بندی ها</a>
                             <ul class="dropdown-menu header__nav-menu" aria-labelledby="dropdownMenu1">
                                 <li><a href="catalog.html">دسته ها</a></li>
@@ -46,19 +54,10 @@
                             </a>
                             <ul class="dropdown-menu header__nav-menu header__nav-menu--scroll"
                                 aria-labelledby="dropdownMenu3">
-                                <li><a href="checkout.html">ثبت نهایی</a></li>
-                                <li><a href="favorites.html">نشان ها</a></li>
-                                <li><a href="profile.html">پروفایل</a></li>
-                                <li><a href="signin.html">ورود اعضا</a></li>
-                                <li><a href="signup.html">ثبت نام</a></li>
-                                <li><a href="forgot.html">فراموشی رمز عبور</a></li>
-                                <li><a href="privacy.html">حریم خصوصی</a></li>
-                                <li><a href="contacts.html">تماس با ما</a></li>
-                                <li><a href="404.html">صفحه 404</a></li>
                                 <li><a href="404.html">بلاگ</a></li>
                                 <li><a href="404.html">مرکز راهنما</a></li>
                                 <li><a href="{% url 'about_us:about_us' %}">درباره ما</a></li>
-
+                                <li><a href="contacts.html">تماس با ما</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'account_app',
     'aboutus_app',
     'privacy_app',
+    'contactus_app',
     # packages
     'debug_toolbar',
     'django_render_partial',

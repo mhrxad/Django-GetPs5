@@ -1,13 +1,8 @@
-from captcha import widgets
-from django import forms
 from django import forms
 from django.core import validators
 from account_app.services.Userservice import UserService
-from utilities.parsley import parsley
-from utilities.Base.BaswForms import BaseForm
-from account_app.models import User
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Invisible
+from utilities.Base.BaseForms import BaseForm
+
 
 userService = UserService()
 

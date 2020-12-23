@@ -22,11 +22,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # apps
     'home_app',
+    'polls_app',
     'account_app',
     'aboutus_app',
     'privacy_app',
     'contactus_app',
     'faq_app',
+    'blog_app',
     # packages
     'debug_toolbar',
     'django_render_partial',
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'stripe',
     'captcha',
+    'jalali_date',
     # sitemap
     'django.contrib.sitemaps',
     'django.contrib.sites',

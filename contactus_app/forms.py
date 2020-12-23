@@ -1,6 +1,6 @@
 from django.core import validators
 
-from utilities.Base.BaseForms import BaseForm
+from polls_app.utilities.Base.BaseForms import BaseForm
 from django import forms
 
 

@@ -7,15 +7,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section__wrap">
-
                         <h2 class="section__title">{{ page_title }}</h2>
-
-
                         <ul class="breadcrumb">
                             <li class="breadcrumb__item"><a href="{% url 'home:home' %}">خانه</a></li>
                             <li class="breadcrumb__item breadcrumb__item--active">{{ page_title }}</li>
                         </ul>
-
                     </div>
                 </div>
             </div>
@@ -29,35 +25,29 @@
 
     <section class="section section--last section--catalog">
         <div class="container">
-
             <div class="row catalog">
-
-
-
                 <div class="col-12 ">
                     <div class="row">
-                        {% for category in faq_categories %}
-                            <div class="col-12 col-lg-6">
-                                <div class="faq">
-                                    <h3 class="faq__title">{{ category.title }}</h3>
-                                    <ul class="faq__list">
-                                        {% for faq in category.faq_category.all %}
-                                            <li><a href="faq/{{ faq.id }}"> {{ faq.title }} </a></li>
-                                        {% endfor %}
-                                    </ul>
+                        {% if faq_categories %}
+                            {% for category in faq_categories %}
+                                <div class="col-12 col-lg-6">
+                                    <div class="faq">
+                                        <h3 class="faq__title">{{ category.title }}</h3>
+                                        <ul class="faq__list">
+
+                                            {% for faq in category.faq_category.all %}
+                                                <li><a href="faq/{{ faq.id }}/{{ faq.title.split|join:"-"}}"> {{ faq.title }} </a></li>
+                                            {% endfor %}
+
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-
-                        {% endfor %}
-
-
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
-
 
 {% endblock %}

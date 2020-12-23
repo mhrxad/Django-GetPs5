@@ -1,0 +1,163 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+{% load poll_extras %}
+{% load render_partial %}
+
+
+{% block BreadCrumb %}
+
+    <section class="section section--first section--last section--head" data-bg="{% static 'img/bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section__wrap">
+                        <h2 class="section__title">بلاگ</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb__item"><a href="{% url 'home:home' %}">خانه</a></li>
+                            <li class="breadcrumb__item breadcrumb__item--active">{{ page_title }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+{% block Content %}
+
+    <section class="section section--last">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-12">
+                    <div class="sort">
+
+                        <form action="/blog/" class="header__form"
+                              method="Get">
+
+                            <input type="text" name="title" class="header__input" placeholder="جستجو در بلاگ ...">
+
+                            <select class="header__select" name="category">
+                                <option value="/blog/">تمام ژانر ها</option>
+                                {% for category in categories %}
+                                    <option value="{{ category.url_title }}">{{ category.title }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <button class="header__btn" type="submit">
+                                <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'>
+                                    <path d='M221.09,64A157.09,157.09,0,1,0,378.18,221.09,157.1,157.1,0,0,0,221.09,64Z'
+                                          style='fill:none;stroke-miterlimit:10;stroke-width:32px'/>
+                                    <line x1='338.29' y1='338.29' x2='448' y2='448'
+                                          style='fill:none;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px'/>
+                                </svg>
+                            </button>
+
+                        </form>
+
+                        <div class="sort__results d-none d-lg-block">{{ articles_count }} پست پیدا شد</div>
+                    </div>
+                </div>
+
+
+                {% for article in page_obj %}
+                    {% render_partial 'blog_app.views.article_card_partial' article=article %}
+                {% endfor %}
+
+
+                <div class="col-12">
+                    <div class="paginator">
+                        <ul class="paginator__wrap">
+                            {% if page_obj.has_previous %}
+                                <li class="paginator__item paginator__item--prev">
+                                    <a href="{% URL 1 'page' request.GET.urlencode %}">
+                                        <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                             viewBox='0 0 512 512'>
+                                            <polyline points='268 112 412 256 268 400'
+                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+                                            <line x1='392' y1='256' x2='100' y2='256'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+                                        </svg>
+                                        <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                             viewBox='0 0 512 512'>
+                                            <polyline points='268 112 412 256 268 400'
+                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+                                            <line x1='392' y1='256' x2='100' y2='256'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+                                        </svg>
+                                    </a>
+                                </li>
+                                {#                                <li class="paginator__item paginator__item--prev">#}
+                                {#                                    <a href="{% URL page_obj.previous_page_number 'page' request.GET.urlencode %}">#}
+                                {#                                        <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'#}
+                                {#                                             viewBox='0 0 512 512'>#}
+                                {#                                            <polyline points='268 112 412 256 268 400'#}
+                                {#                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>#}
+                                {#                                            <line x1='392' y1='256' x2='100' y2='256'#}
+                                {#                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>#}
+                                {#                                        </svg>#}
+                                {#                                    </a>#}
+                                {#                                </li>#}
+                            {% endif %}
+
+                            {% for page in paginator.page_range %}
+                                {% if page == page_obj.number %}
+                                    <li class="paginator__item paginator__item--active"><a
+                                            href="{% URL page 'page' request.GET.urlencode %}">{{ page }}</a></li>
+                                {% elif page > page_obj.number|add:'-3' and page < page_obj.number|add:'3' %}
+                                    <li class="paginator__item"><a
+                                            href="{% URL page 'page' request.GET.urlencode %}">{{ page }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                {#                                <li class="paginator__item paginator__item--next">#}
+                                {#                                    <a href="{% URL page_obj.next_page_number 'page' request.GET.urlencode %}">#}
+                                {#                                        <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'#}
+                                {#                                             viewBox='0 0 512 512'>#}
+                                {#                                            <polyline points='244 400 100 256 244 112'#}
+                                {#                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>#}
+                                {#                                            <line x1='120' y1='256' x2='412' y2='256'#}
+                                {#                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>#}
+                                {#                                        </svg>#}
+                                {#                                    </a>#}
+                                {#                                </li>#}
+
+                                <li class="paginator__item paginator__item--next">
+                                    <a href="{% URL paginator.num_pages 'page' request.GET.urlencode %}">
+                                        <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                             viewBox='0 0 512 512'>
+                                            <polyline points='244 400 100 256 244 112'
+                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+                                            <line x1='120' y1='256' x2='412' y2='256'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+                                        </svg>
+                                        <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                             viewBox='0 0 512 512'>
+                                            <polyline points='244 400 100 256 244 112'
+                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+                                            <line x1='120' y1='256' x2='412' y2='256'
+                                                  style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/>
+                                        </svg>
+                                    </a>
+                                </li>
+
+                            {% endif %}
+
+                        </ul>
+
+                        <div class="paginator__counter">
+                            نمایش {{ page_obj.start_index }} - {{ page_obj.end_index }} از {{ page_obj.paginator.count }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

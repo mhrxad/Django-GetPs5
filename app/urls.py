@@ -21,6 +21,7 @@ urlpatterns = [
     path('', include("privacy_app.urls")),
     path('', include("contactus_app.urls")),
     path('', include("faq_app.urls")),
+    path('blog/', include("blog_app.urls")),
 
 
     path('admin/', admin.site.urls),

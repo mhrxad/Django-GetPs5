@@ -23,3 +23,17 @@
         });
     </script>
 {% endif %}
+
+<script>
+$(document).ready(function () {
+    $(".scroll_to_form").click(function () {
+        $('html, body').animate({
+            scrollTop: $("#scrolles").offset().top
+        }, 1000);
+    });
+});
+
+function set_reply_comment(commentId) {
+    $('#id_parent_id').val(commentId);
+}
+</script>

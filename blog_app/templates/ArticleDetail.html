@@ -1,0 +1,157 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+{% load poll_extras %}
+{% load render_partial %}
+
+
+{% block BreadCrumb %}
+    <section class="section section--first section--last section--head" data-bg="{{ article.image.url }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section__wrap">
+                        <h2 class="section__title">{{ page_title }}</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb__item"><a href="{% url 'home:home' %}">خانه</a></li>
+                            <li class="breadcrumb__item"><a href="{% url 'faq:faqs' %}">{{ page_title }}</a></li>
+                            <li class="breadcrumb__item breadcrumb__item--active">{{ article.title }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+{% block Content %}
+
+    <section class="section ">
+        <div class="container">
+
+            <div class="article">
+                <div class="row">
+                    <div class="col-12 col-xl-8">
+
+                        <div class="article__content">
+                            <span class="article__date"><svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                                             viewBox='0 0 512 512'><path
+                                    d='M256,64C150,64,64,150,64,256s86,192,192,192,192-86,192-192S362,64,256,64Z'
+                                    style='fill:none;stroke-miterlimit:10;stroke-width:32px'/><polyline
+                                    points='256 128 256 272 352 272'
+                                    style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>
+                                {{ article.create_date | jalali }}</span>
+
+                            <h1>{{ article.title }}</h1>
+
+                            {{ article.description | safe }}
+
+                            {% for tag in tags %}
+                                <a href="#" class="article__category">{{ tag }}</a>
+                            {% endfor %}
+
+                            {#                            {% with article.tags|split:"-" as tags %}#}
+                            {#                                {% for tag in tags %}#}
+                            {#                                    <a href="#" class="article__category">{{ tag }}</a>#}
+                            {#                                {% endfor %}#}
+                            {#                            {% endwith %}#}
+
+                        </div>
+
+
+                    {% render_partial 'blog_app.views.article_comments_partial' comments=comments article_id=article.id %}
+
+
+
+                    </div>
+
+                    <div class="col-12 col-xl-4">
+                        <div class="sidebar">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 col-xl-12">
+
+                                    <ul class="list list--sidebar">
+                                        <li class="list__item">
+                                            <a href="#" class="list__cover">
+                                                <img src="{% static 'img/cards/9.jpg' %}" alt="">
+                                            </a>
+                                            <div class="list__wrap">
+                                                <h3 class="list__title">
+                                                    <a href="details.html">فیلم سینمایی سگ شکاری 2020</a>
+                                                </h3>
+                                                <div class="list__price">
+                                                    <span>3000 تومان</span><s>6000 تومان</s><b>50% تخفیف</b>
+                                                </div>
+                                                <button class="list__buy" type="button">
+                                                    <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                                         viewBox='0 0 512 512'>
+                                                        <line x1='256' y1='112' x2='256' y2='400'
+                                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                                        <line x1='400' y1='256' x2='112' y2='256'
+                                                              style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="col-12 col-lg-6 col-xl-12">
+
+                                    <form action="#" class="subscribe">
+                                        <div class="subscribe__img">
+                                            <svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'
+                                                 viewBox='0 0 512 512'>
+                                                <path d='M441.6,171.61,266.87,85.37a24.57,24.57,0,0,0-21.74,0L70.4,171.61A40,40,0,0,0,48,207.39V392c0,22.09,18.14,40,40.52,40h335c22.38,0,40.52-17.91,40.52-40V207.39A40,40,0,0,0,441.6,171.61Z'
+                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                                <path d='M397.33,368,268.07,267.46a24,24,0,0,0-29.47,0L109.33,368'
+                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                                <line x1='309.33' y1='295' x2='445.33' y2='192'
+                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                                <line x1='61.33' y1='192' x2='200.33' y2='297'
+                                                      style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/>
+                                            </svg>
+                                        </div>
+                                        <h4 class="subscribe__title">ثبت نام در خبرنامه</h4>
+                                        <p class="subscribe__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ و با استفاده از طراحان گرافیک است.</p>
+                                        <input type="text" class="form__input" placeholder="ایمیل">
+                                        <button type="button" class="form__btn">ارسال</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="section section--last">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="section__title-wrap">
+                        <h2 class="section__title">اخبار مرتبط</h2>
+                        <div class="section__nav-wrap">
+                            <a href="news.html" class="section__view">نمایش همه</a>
+                        </div>
+                    </div>
+                </div>
+
+                {% for article in related_articles %}
+                    {% render_partial 'blog_app.views.article_card_partial' article=article %}
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

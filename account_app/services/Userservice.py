@@ -1,9 +1,6 @@
-from django.contrib.auth.hashers import make_password
 from account_app.services.IUserService import IUserService
-from django.utils.crypto import get_random_string
 from account_app import models
-from utilities.services.MailService import EmailService
-from django.utils.crypto import get_random_string
+from polls_app.utilities.services.MailService import EmailService
 import uuid
 
 

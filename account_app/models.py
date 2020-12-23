@@ -69,6 +69,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def avatar_tag(self):
         return format_html("<img width=100 height=75 style='border-radius: 5px;' src='{}'>".format(self.avatar.url))
+
     avatar_tag.short_description = "آواتار"
 
     def get_delete_user_url(self):

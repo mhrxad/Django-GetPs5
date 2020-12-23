@@ -1,7 +1,7 @@
 from django import forms
 from django.core import validators
 from account_app.services.Userservice import UserService
-from utilities.Base.BaseForms import BaseForm
+from polls_app.utilities.Base.BaseForms import BaseForm
 
 
 userService = UserService()
